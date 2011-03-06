@@ -8,7 +8,7 @@
 	$dbh = new PDO( $dsn, $user, $pass );
 	
 	if( $_GET['p'] == 1 ){
-		lists( $dbh );
+		lists();
 	}else{
 		main();
 	}
