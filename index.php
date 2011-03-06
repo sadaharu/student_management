@@ -6,12 +6,18 @@
 	$user = 'app_user';
 	$pass = 'app_user';
 	$dbh = new PDO( $dsn, $user, $pass );
-	
-	if( $_GET['p'] == 1 ){
-		lists();
+	$action = array( 
+		main,
+		lists,
+		edit,
+		delete,
+	);
+	if( $_GET['p'] ){
+		$action[ $_GET['p'] ]();
 	}else{
 		main();
 	}
+
 	function main(){
 		echo "main";
 	}
@@ -33,8 +39,15 @@
 		$smarty->display('index.tpl');
 
 		$pdo = null;
-}
-function delete( $id ){
+	}
+	function delete(){
+		$id = $_GET['id'];
+		echo $id." is deleted";
+	}
 
-}
+	function edit(){
+		$id = $_GET['id'];
+		echo $id." is edit";
+		
+	}
 ?>
